@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mmHg">#a6a5a5</color>
+    <color name="start">#a6a5a5</color>
+    <color name="icpHeadLine">#fefefe</color>
+    <color name="settings">#a6a5a5</color>
+    <color name="SentSignalWaveformLineColor">#14d1a7</color>
+    <color name="AcousticWaveformColor">#14d1a7</color>
+    <color name="mIcpOverTimeWaveformColor">#14d1a7</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#FF888888</color>
+    <color name="icpValueR">#ec1f27</color>
+    <color name="icpValueG">#64b611</color>
+    <color name="green">#64b611</color>
+    <color name="row_color">#EBEEF1</color>
+    <color name="trend">#e76c72</color>
+    <color name="trend_dis">#f21515</color>
+    <color name="red">#ff0000</color>
+
+    <color name="red1">#ebff727c</color>
+    <color name="green1">#eb00e999</color>
+
+    <color name="pbarbg">#13402d</color>
+    <color name="pbaractive">#3fc68f</color>
+    <color name="onoff">#1b1f22</color>
+    <color name="pbarline">#464646</color>
+    <color name="tbline">#767979</color>
+    <color name="tbrawred">#ec1f27</color>
+</resources>

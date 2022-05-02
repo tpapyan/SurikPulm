@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SurikPulm</string>
+    <string name="versionNumber">Version:</string>
+    <string name="max_cache_size">Cache size:</string>
+    <string name="soundValue">Sound volume (0-30):</string>
+    <string name="soundLength">Recording length (seconds):</string>
+    <string name="location">AC voltage:</string>
+    <string name="usa">110v</string>
+    <string name="europe">220v</string>
+    <string name="base_directory">Base directory:</string>
+    <string name="snapshot_mode">Snapshot mode:</string>
+    <string name="snapshot_mode_before">Take Snapshot before \n recording:</string>
+    <string name="snapshot_mode_after">Take Snapshot after \n recording:</string>
+    <string name="demo">Demo mode:</string>
+    <string name="snapshot_preview">Snapshot preview</string>
+    <string name="continuous_mode">Continuous mode:</string>
+    <string name="clear_title">Confirmation Window</string>
+    <string name="clear_body">Do you want to clear the content?</string>
+    <string name="interval">Interval between records:</string>
+    <string name="normalIcpUpper">Normal ICP cutoff (mmHg):</string>
+    <string name="highIcpUpper">High ICP cutoff (mmHg):</string>
+    <string name="minIcpValue">Low ICP alarm below (mmHg):</string>
+    <string name="maxIcpValue">High ICP alarm above (mmHg):</string>
+    <string name="apply">Apply</string>
+    <string name="back_to_default_values">Restore defaults</string>
+    <string name="done">Done</string>
+    <string name="alert">Alert</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="icp">ICP</string>
+    <string name="mmhg">mmHg</string>
+    <string name="settings">Settings</string>
+    <string name="searching">Searching</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="clear">Clear</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="ear_buds_disconnected">Ear-buds Disconnected</string>
+    <string name="alarmsMode">Ear buds disconnection alarm:</string>
+    <string name="front_end_disconnected">Front-end Disconnected</string>
+    <string name="BDisconnected">Bad Signal</string>
+    <string name="HighICP">High ICP alarm</string>
+    <string name="LowICP">Low ICP</string>
+    <string name="Processing">Processing...</string>
+    <string name="clinicMode">Trial mode:</string>
+    <string name="clinicId">Trial ID:</string>
+    <string name="clinicIdHS">HS -</string>
+    <string name="enableClinicalTrialScreen">Enable clinical trial screen:</string>
+    <string name="monitorName">Monitor name:</string>
+    <string name="graph">Graph type:</string>
+    <string name="patientId">Patient ID:</string>
+    <string name="patientInitials">Patient initials:</string>
+    <string name="birthday">Age:</string>
+    <string name="gender">Gender:</string>
+    <string name="height">Height [cm]:</string>
+    <string name="weight">Weight [kg]:</string>
+    <string name="ethnicity">Race:</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="clinicalTrialModeICP">Clinical Trial Window</string>
+    <string name="clinicicp">Study type: ICP</string>
+    <string name="clinicvasospaszm">Study type: Vasospasm</string>
+    <string name="clinicconc">Study type: Concussion</string>
+    <string name="clinicalTrialModeVasospasm">Clinical Trial Window</string>
+    <string name="clinicalTrialModeConcussion">Clinical Trial Window</string>
+    <string name="icpMonitor">ICP monitor:</string>
+    <string name="evd">EVD</string>
+    <string name="type">Type</string>
+    <string name="n">N/A</string>
+    <string name="parenchymal">Parenchymal</string>
+    <string name="lumbar">Lumbar</string>
+    <string name="other">Other</string>
+    <string name="pathology">Pathology:</string>
+    <string name="peep">PEEP:</string>
+    <string name="ventilation">Ventilation:</string>
+    <string name="notes">Notes:</string>
+    <string name="positionUper">Position Upper \n body(°):</string>
+    <string name="positionLower">Position Lower \n body(°):</string>
+    <string name="diagnosis">Diagnosis:</string>
+    <string name="medications">Medication(s):</string>
+    <string name="comments">Comments:</string>
+    <string name="ok">OK</string>
+    <string name="newpatient">Add new patient...</string>
+    <string name="cancel">Cancel</string>
+    <string name="select">Select</string>
+    <string name="save">Save</string>
+    <string name="deleteUsername">Delete username</string>
+    <string name="tfs">Recording duration</string>
+    <string name="patientsList">Existing patients list:</string>
+    <string name="pIdTable">Patient ID</string>
+    <string name="PinitialsTable">Initials</string>
+    <string name="plastsessionTable">Last Session</string>
+    <string name="id">ID</string>
+    <string name="passheader">Enter Password:</string>
+    <string name="u_name">Username</string>
+    <string name="u_password">Password:</string>
+    <string name="u_confirm_password">Confirm password:</string>
+    <string name="register">New user:</string>
+    <string name="login">Login</string>
+    <string name="authorization">Authorization</string>
+    <string name="passForSave">Password:</string>
+    <string name="error">Error: Password is incorrect</string>
+    <string name="editmode">Username details:</string>
+    <string name="next">Next</string>
+    <string name="p_days">Days passed \nfrom insertion:</string>
+    <string name="recording">Recording</string>
+    <string name="update">Update</string>
+    <string name="demo_string">Demo mode</string>
+
+
+    <string name="newtext">New</string>
+    <string name="open">Open</string>
+
+    <string name="pid_error_digits">Please, enter 3 digits</string>
+    <string name="pid_error_format">Wrong format: 001</string>
+    <string name="pid_error_exists">Patient ID exists</string>
+
+
+    <string name="warning">Warning</string>
+    <string name="battery_warning">Tablet’s battery level is lower than 50%, please charge the tablet.</string>
+	<string name="total_time">Out of</string>
+    <string name="generalsettings">General Settings</string>
+
+
+    <string name="alertdialogtitle">Android OS</string>
+    <string name="alertdialogtext">Notice that your Android OS version is out of date. This might cause your HeadSense application to work inadequately. Please upgrade to version 6.0.1 or above.</string>
+    <string name="permissionsdialog">The software cannot continue without the required permissions. Please update permissions and try again.</string>
+
+
+
+    <string-array name="graph">
+        <item>Acoustic</item>
+        <item>ICP</item>
+    </string-array>
+
+    <string name="soundLengthDefault">10</string>
+    <string-array name="soundLength">
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+    </string-array>
+
+
+</resources>
