@@ -203,21 +203,6 @@ public class HeadSense extends AppCompatActivity implements HeadSenseModelClient
 
     private void normalStart() {
 
-//        File file = new File(this.getExternalFilesDir(""),"SurikPulm");
-//
-//        if (!file.exists()){
-//
-//            boolean b = file.mkdir();
-//
-//            Toast.makeText(this,"Successful " + b,Toast.LENGTH_SHORT).show();
-//        }else
-//        {
-//
-//            Toast.makeText(this,"Folder Already Exists",Toast.LENGTH_SHORT).show();
-//
-//
-//        }
-
         if (!oldversion && ValuesOfSettings.getInstance().isEmpty()) {
             openSettings();
             setApplicationFirstLaunch(true);
