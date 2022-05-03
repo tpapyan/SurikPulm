@@ -2,24 +2,24 @@ package com.surik.pulm;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.os.Environment;
 
 
 import java.io.File;
 
 /**
- *
- *  Containing values of Settings
- *
+ * Containing values of Settings
  */
 public class ValuesOfSettings extends Application {
 
     private static ValuesOfSettings instance;
 
-    public static final String HEADSENSE_DEFAULT_FOLDER = "/mnt/sdcard/SurikPulm/";
+    //public static final String HEADSENSE_DEFAULT_FOLDER = "/mnt/sdcard/SurikPulm/";
+   // public static final String HEADSENSE_DEFAULT_FOLDER = Environment.getExternalStorageDirectory().getPath() + File.separator + "SurikPulm"+ File.separator;
     public static final String TRIAL_ID = "000";
 
-    private  SharedPreferences mSharedPreferences;
-    private  SharedPreferences.Editor mEditor;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
 
     private boolean continuesMode;
     private int recording_interval;
@@ -37,16 +37,21 @@ public class ValuesOfSettings extends Application {
         initValues();
     }
 
-    public void initValues(){
+    public String getAppDir(){
+        return getExternalMediaDirs()[0].toString() + "/SurikPulm/";
+    }
+
+    public void initValues() {
         continuesMode = mSharedPreferences.getBoolean("continuesMode", true);
         recording_interval = mSharedPreferences.getInt("timeBetweenRecords", 2);
         soundLength = mSharedPreferences.getInt("soundLength", 10);
-        baseDirectory = mSharedPreferences.getString("baseDirectory", HEADSENSE_DEFAULT_FOLDER);
+        //baseDirectory = mSharedPreferences.getString("baseDirectory", getExternalFilesDir(null)+"/SurikPulm/");
+        baseDirectory = mSharedPreferences.getString("baseDirectory", getAppDir());
         demo = mSharedPreferences.getBoolean("demo", false);
 
     }
 
-    public void initSharedPreferences(){
+    public void initSharedPreferences() {
         mEditor.putBoolean("continuesMode", continuesMode);
         mEditor.putInt("timeBetweenRecords", recording_interval);
         mEditor.putInt("soundLength", soundLength);
@@ -58,7 +63,7 @@ public class ValuesOfSettings extends Application {
         mEditor.commit();
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return mSharedPreferences.getAll().isEmpty();
     }
 
@@ -66,11 +71,11 @@ public class ValuesOfSettings extends Application {
         continuesMode = true;
         recording_interval = 2;
         soundLength = 10;
-        baseDirectory = HEADSENSE_DEFAULT_FOLDER;
+        baseDirectory = getAppDir();
         demo = false;
     }
 
-    public static ValuesOfSettings getInstance(){
+    public static ValuesOfSettings getInstance() {
         return instance;
     }
 

@@ -15,6 +15,7 @@ import android.graphics.drawable.StateListDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.util.Log;
@@ -38,13 +39,16 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 
 /**
  * all main processes are here, HeadSense is the main activity when app is lunched
  */
-public class HeadSense extends AppCompatActivity  implements HeadSenseModelClientInterface {
+public class HeadSense extends AppCompatActivity implements HeadSenseModelClientInterface {
 
     private static final String ICP_VALUES_FILE_NAME = "icp_values";
     private static final String RP_VALUES_FILE_NAME = "rp_values";
@@ -118,6 +122,7 @@ public class HeadSense extends AppCompatActivity  implements HeadSenseModelClien
 
     public boolean isRestarted = false;
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
+    private static final int PERMISSION_REQUEST_CODE = 7;
 
 
     @Override
@@ -125,7 +130,6 @@ public class HeadSense extends AppCompatActivity  implements HeadSenseModelClien
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.main_view);
-
         //Initialize result launcher
         ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -135,7 +139,7 @@ public class HeadSense extends AppCompatActivity  implements HeadSenseModelClien
                         //Initialize result data
                         Intent intent = result.getData();
 
-                        if(intent!=null){
+                        if (intent != null) {
 //                            try {
 //                                Bitmap bitmap = MediaStore.Images.Media.getBitmap(
 //                                        getContentResolver(), intent.getData()
@@ -162,6 +166,58 @@ public class HeadSense extends AppCompatActivity  implements HeadSenseModelClien
         }
         mUserStop = true;
         setContext(this);
+
+        if (ContextCompat.checkSelfPermission(HeadSense.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(HeadSense.this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+            normalStart();
+
+        } else {
+
+            askPermission();
+        }
+
+
+    }
+
+    private void askPermission() {
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, PERMISSION_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+
+                normalStart();
+            } else {
+                Toast.makeText(HeadSense.this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
+    private void normalStart() {
+
+//        File file = new File(this.getExternalFilesDir(""),"SurikPulm");
+//
+//        if (!file.exists()){
+//
+//            boolean b = file.mkdir();
+//
+//            Toast.makeText(this,"Successful " + b,Toast.LENGTH_SHORT).show();
+//        }else
+//        {
+//
+//            Toast.makeText(this,"Folder Already Exists",Toast.LENGTH_SHORT).show();
+//
+//
+//        }
+
         if (!oldversion && ValuesOfSettings.getInstance().isEmpty()) {
             openSettings();
             setApplicationFirstLaunch(true);
@@ -517,7 +573,7 @@ public class HeadSense extends AppCompatActivity  implements HeadSenseModelClien
         thumbStates.addState(intValueDis, new ColorDrawable(colorDisabled));
         final int[] intValueOff = new int[]{};
         thumbStates.addState(intValueOff, new ColorDrawable(colorOff)); // this one has to come last
-        starter.setThumbDrawable(thumbStates);
+        // starter.setThumbDrawable(thumbStates);
         mSentSignalWaveform = (LinearLayout) findViewById(R.id.sentSignalWaveform);
 //        mSentSignalWaveform1 = (LinearLayout) findViewById(R.id.sentSignalWaveform1);
 //        mSentSignalWaveform3 = (LinearLayout) findViewById(R.id.sentSignalWaveform3);
