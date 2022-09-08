@@ -4,6 +4,7 @@ package com.surik.pulm;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -124,6 +125,7 @@ public class HeadSense extends AppCompatActivity implements HeadSenseModelClient
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
     private static final int PERMISSION_REQUEST_CODE = 7;
 
+    private VideoView video;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -572,6 +574,7 @@ public class HeadSense extends AppCompatActivity implements HeadSenseModelClient
         progressBar.setProgress(100);
         progressBar.setScaleY(2f);
         progressBarPercent = (TextView) findViewById(R.id.pbarpercent);
+        video = (VideoView) findViewById(R.id.video);
     }
 
     public void prepareForRunningStartTaskInBackground() {
@@ -646,6 +649,7 @@ public class HeadSense extends AppCompatActivity implements HeadSenseModelClient
                 break;
             }
             case AUDIO_RECORD_STOPPED: {
+                hideHint();
                 if (!stopedAlgo) {
                     processSavingAudioDataBuffer();
                 }
@@ -820,12 +824,38 @@ public class HeadSense extends AppCompatActivity implements HeadSenseModelClient
         setBadAlgCount(0);
         isInDisconnectstate = false;
         startProgressBar();
+        showHint();
         startAlgorithm();
-
         if (!f) {
             startTimerTask();
             startTotalTimerTask();
         }
+    }
+
+    private void showHint() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mSentSignalWaveform.setVisibility(View.GONE);
+                video.setVisibility(View.VISIBLE);
+                video.setMediaController(null);
+                video.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.breath));
+                video.start();
+            }
+        });
+
+    }
+
+    private void hideHint() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                video.stopPlayback();
+                mSentSignalWaveform.setVisibility(View.VISIBLE);
+                video.setVisibility(View.GONE);
+            }
+        });
+
     }
 
     public void startProcessingAlgorithm(boolean fromCountiniouseMode) {
